@@ -1,0 +1,19 @@
+2026-09-05T09:00:01.214Z INFO api-gateway request_id=req-8d5c21 method=GET path=/api/orders user_id=1842 status=200 duration_ms=43
+2026-09-05T09:01:12.009Z INFO order-service request_id=req-c17ae0 order_id=ORD-49218 event=order_lookup status=200 duration_ms=67
+2026-09-05T09:04:23.651Z WARN payment-service request_id=req-9f1b77 order_id=ORD-49218 message="payment provider latency high" duration_ms=1840
+2026-09-05T09:05:04.337Z ERROR payment-service request_id=req-a4e943 order_id=ORD-49218 endpoint=/v1/charges status=504 message="Stripe gateway timeout after 3000ms"
+2026-09-05T09:05:17.821Z ERROR payment-service request_id=req-7a0d22 order_id=ORD-49231 endpoint=/v1/charges status=504 message="Stripe gateway timeout after 3000ms"
+2026-09-05T09:06:02.181Z ERROR payment-service request_id=req-11c0bd order_id=ORD-49244 endpoint=/v1/charges status=504 message="Stripe gateway timeout after 3000ms"
+2026-09-05T09:06:55.912Z ERROR payment-service request_id=req-5d9e80 order_id=ORD-49258 endpoint=/v1/charges status=504 message="Stripe gateway timeout after 3000ms"
+2026-09-05T09:07:31.440Z WARN api-gateway request_id=req-0a2c7f path=/checkout message="upstream payment-service returned 504" status=502
+2026-09-05T09:10:12.533Z INFO payment-service request_id=req-4b809f message="provider connection pool recovered" active_connections=12
+2026-09-05T09:14:19.100Z ERROR inventory-service request_id=req-20e4a1 product_id=SKU-10024 endpoint=/api/inventory message="Redis connection refused at 10.4.7.22:6379"
+2026-09-05T09:14:25.804Z ERROR inventory-service request_id=req-f7619e product_id=SKU-10091 endpoint=/api/inventory message="Redis connection refused at 10.4.7.22:6379"
+2026-09-05T09:15:41.652Z ERROR inventory-service request_id=req-e82b6c product_id=SKU-10110 endpoint=/api/inventory message="Redis connection refused at 10.4.7.22:6379"
+2026-09-05T09:16:18.390Z FATAL inventory-service request_id=req-14d2a0 message="Redis connection pool exhausted; failing readiness check" status=503
+2026-09-05T09:17:40.747Z WARN api-gateway request_id=req-f0d043 path=/api/inventory message="upstream inventory-service unavailable" status=503
+2026-09-05T09:22:03.007Z INFO inventory-service request_id=req-c4b8aa message="Redis reconnect successful" redis_host=10.4.7.22
+2026-09-05T09:27:10.414Z ERROR user-service request_id=req-3f1b99 user_id=9471 endpoint=/api/profile message="Database query exceeded 5000ms" query=SELECT_profile_by_user_id
+2026-09-05T09:27:55.993Z ERROR user-service request_id=req-046bd1 user_id=9510 endpoint=/api/profile message="Database query exceeded 5000ms" query=SELECT_profile_by_user_id
+2026-09-05T09:29:02.336Z INFO user-service request_id=req-0f2abe message="query pool scaled" max_connections=40
+2026-09-05T09:32:45.720Z INFO api-gateway request_id=req-553ead method=GET path=/health status=200 duration_ms=4
