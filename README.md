@@ -26,3 +26,18 @@ The grouping is deliberately deterministic and explainable: UUIDs, IDs, IPs, quo
 ## Portfolio extensions
 
 Persist analyses in SQLite/Supabase, add ingestion APIs and alerts, support OpenTelemetry fields, and add role-based redaction policies.
+
+## Hosted AI analysis (Vercel + Hugging Face)
+
+The deterministic dashboard runs in the browser. The optional **Generate AI analysis** button sends only a redacted aggregate—normalized failure signatures, counts, time window, and affected surfaces—to `/api/analyze`. It never sends raw uploaded log lines.
+
+The Vercel serverless function calls a hosted Qwen model through Hugging Face. Keep the Hugging Face token on the server:
+
+1. Create a Hugging Face access token with inference permission.
+2. Import this GitHub repository in Vercel.
+3. In **Project Settings → Environment Variables**, add `HF_TOKEN` with that value for Production, Preview, and Development.
+4. Deploy. Vercel serves the static app and the `/api/analyze` endpoint from one domain.
+
+`HF_MODEL` is optional and defaults to `Qwen/Qwen2.5-7B-Instruct`. Set it in Vercel only if you need to select another Hugging Face-supported model.
+
+GitHub Pages can continue to serve the deterministic dashboard, but it cannot safely host the AI endpoint because it has no server-side environment variables.
